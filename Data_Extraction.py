@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-def read_dat_files(filepath=r'D:\Graduation Project\QuadPlane Design\APC Propellers\PERFILES_WEB\PERFILES2'):
+def read_dat_files(filepath=r'./PERFILES2'):
     '''
     input:
         --> filepath: path to the folder containing the dat files
@@ -14,7 +14,7 @@ def read_dat_files(filepath=r'D:\Graduation Project\QuadPlane Design\APC Propell
     file_names_list = os.listdir(filepath)
     datContent = []
     for file_name in file_names_list:
-        datContent.append([line.strip().split() for line in open(filepath + '\\' + file_name).readlines()])
+        datContent.append([line.strip().split() for line in open(filepath + '/' + file_name).readlines()])
 
     return datContent
 
@@ -131,4 +131,4 @@ if __name__ == "__main__":
         big_df = big_df.append(file_df, ignore_index=True)
     with pd.option_context('display.max_rows', 10, 'display.max_columns', 8):
         print(big_df)
-    big_df.to_csv(r'D:\Graduation Project\QuadPlane Design\APC Propellers\PERFILES_WEB\all_props.csv', index=False)
+    big_df.to_csv(r'./all_props.csv', index=False)
